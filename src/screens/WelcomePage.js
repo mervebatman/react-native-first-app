@@ -10,7 +10,7 @@ const WelcomePage = ({route, navigation}) => {
 
       <Pressable 
                 style={styles.buttonStyle} 
-                onPress={() => navigation.goBack()} // Geri gitmek için
+                onPress={() => navigation.goBack()}
             >
                 <Text style={styles.buttonText}>Go Back</Text>
             </Pressable>

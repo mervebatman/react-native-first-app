@@ -126,13 +126,15 @@ const styles = StyleSheet.create({
     width: '80%',
     height: 40,
     borderRadius: 5,
-    marginVertical: 10
+    marginVertical: 10,
+    paddingLeft: 10,
   },
   labelStyle: {
     alignSelf: 'flex-start', 
     marginLeft: '10%',
     fontSize: 16,
     fontWeight: 'bold',
+    color: 'red'
   },
   buttonStyle: {
     width: '15%',
