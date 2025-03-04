@@ -1,41 +1,50 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Image,Pressable } from 'react-native'
+import {Loading, CustomTextInput, CustomButton} from '../components/';
 
-const LoginPage = () => {
+const LoginPage = ({navigation}) => {
    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
   return (
     <View style={styles.container}>
-     <Image
+          <Image
              style={styles.imageStyle}
-             source={require('../../assets/welcome.png')}
+             source={require('../../assets/login.png')}
            />
-            <Text style={styles.labelStyle}>Email</Text>
-            <TextInput
-              style={styles.textInputStyle}
-              placeholder='Enter your email'
-              value={email}
-              onChangeText={setEmail}
-            />
-            <Text  style={styles.labelStyle}>Surname</Text>
-             <TextInput
-               style={styles.textInputStyle}
-               placeholder='Enter your password'
-                secureTextEntry={true}
-               value={password}
-               onChangeText={setPassword}
-             />
 
-              <Pressable
-                  
-                     style={({ pressed }) => [
-                       styles.buttonStyle,
-                      { backgroundColor: pressed ? 'gray' : '#3498db' } 
-                      ]}
-                     >
-                     <Text style={{ color: 'white', fontWeight: 'bold'}}>Save</Text>
-                    </Pressable>
+          <CustomTextInput
+            title="Email"
+            isSecureText={false}
+            handleOnChangeText={setEmail}
+            handleValue={email}
+            handlePlaceholder="Enter your email"
+          />
+
+          <CustomTextInput
+            title="Password"
+            isSecureText={true}
+            handleOnChangeText={setPassword}
+            handleValue={password}
+            handlePlaceholder="Enter your password"
+          />
+
+          <CustomButton
+            buttonText="Login"
+            setWidth='80%'
+            handleOnPress={() => setIsLoading(true)}
+            buttonColor='#1745ed'
+            pressedButtonColor='gray'
+          />
+
+          <CustomButton
+            buttonText="Sign Up"
+            setWidth='25%'
+            handleOnPress={() => navigation.navigate('Signup')}
+            buttonColor='#1745ed'
+            pressedButtonColor='gray'
+          />
     </View>
   )
 }
@@ -47,29 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  textInputStyle: {
-    borderWidth:1,
-    width: '80%',
-    height: 40,
-    borderRadius: 5,
-    marginVertical: 10,
-    paddingLeft: 10,
-  },
-  labelStyle: {
-    alignSelf: 'flex-start', 
-    marginLeft: '10%',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  buttonStyle: {
-    width: '15%',
-    height: 40,
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: 10,
-    backgroundColor: '#3498db',
+    backgroundColor: '#d7e8f7'
   },
   imageStyle: {
     width: 100,
