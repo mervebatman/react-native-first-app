@@ -1,76 +1,82 @@
-import { StyleSheet, Text, View, Image, SafeAreaView,  KeyboardAvoidingView, ScrollView, Platform, TouchableWithoutFeedback, Keyboard, Pressable  } from 'react-native'
+import { StyleSheet, Text, View, Image, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, TouchableWithoutFeedback, Keyboard, Pressable } from 'react-native'
 import { CustomTextInput, CustomButton } from '../components'
 import { useState } from 'react'
 
-const SignUpPage = ({navigation}) => {
+const SignUpPage = ({ navigation }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   return (
-  <SafeAreaView style={styles.container}>
-    <KeyboardAvoidingView 
+    <SafeAreaView style={styles.container}>
+      {/* <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined} // Android için undefined bırak
         style={styles.containerView}
-      >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ScrollView 
-            contentContainerStyle={styles.scrollContainer} 
-            keyboardShouldPersistTaps="handled" // Klavye açıkken tıklamaları yönlendir
-          >
-      <View style={styles.titleStyle}>
-        <Text style={styles.signUp}>Sign Up</Text>
+      > */}
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView
+          contentContainerStyle={styles.scrollContainer}
+          keyboardShouldPersistTaps="handled" // Klavye açıkken tıklamaları yönlendir
+        >
+          <View style={styles.titleStyle}>
+            <Text style={styles.signUp}>Sign Up</Text>
 
-        <Image
-          style={styles.imageStyle}
-          source={require('../../assets/login.png')}
-        />
-      </View>
+            <Image
+              style={styles.imageStyle}
+              source={require('../../assets/login.png')}
+            />
+          </View>
 
-      <View style={styles.textInputContainer}>
-        <CustomTextInput
-          title="Name"
-          isSecureText={false}
-          handlePlaceholder="Enter your name"
-          handleOnChangeText={setName}
-          handleValue={name}
-        />
+          <View style={styles.textInputContainer}>
+            <CustomTextInput
+              title="Name"
+              isSecureText={false}
+              handlePlaceholder="Enter your name"
+              handleOnChangeText={setName}
+              handleValue={name}
+            />
 
-        <CustomTextInput
-          title="Email"
-          isSecureText={false}
-          handlePlaceholder="Enter your email"
-          handleOnChangeText={setEmail}
-          handleValue={email}
-        />
+            <CustomTextInput
+              title="Email"
+              isSecureText={false}
+              handlePlaceholder="Enter your email"
+              handleOnChangeText={setEmail}
+              handleValue={email}
+            />
 
-       <CustomTextInput
-          title="Password"
-          isSecureText={true}
-          handlePlaceholder="Create your password"
-          handleOnChangeText={setPassword}
-          handleValue={password}
-        />
-      </View>
+            <CustomTextInput
+              title="Password"
+              isSecureText={true}
+              handlePlaceholder="Create your password"
+              handleOnChangeText={setPassword}
+              handleValue={password}
+            />
+          </View>
 
-      <View style={styles.signUpOptions}>
-        <CustomButton
-          buttonText="Sign Up"
-          setWidth='80%'
-          buttonColor='#1745ed'
-          pressedButtonColor='gray'
-          handleOnPress={() => console.log(name, " ", email, " ", password )}
-        />
+          <View style={styles.signUpOptions}>
+            <CustomButton
+              buttonText="Sign Up"
+              setWidth='80%'
+              buttonColor='#1745ed'
+              pressedButtonColor='gray'
+              handleOnPress={() => console.log(name, " ", email, " ", password)}
+            />
 
-         <Pressable onPress={() => navigation.navigate('Login')}>
-          <Text style={{fontWeight: 'bold'}}>Already have an account? Login</Text>
-         </Pressable>
-      </View>
-    </ScrollView>
+            <View>
+              <Image
+                style={styles.imageStyle}
+                source={require('../../assets/login.png')}
+              />
+            </View>
+            <Pressable onPress={() => navigation.navigate('Login')}>
+              <Text style={{ fontWeight: 'bold' }}>Already have an account? Login</Text>
+            </Pressable>
+          </View>
+        </ScrollView>
 
-    </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
-  </SafeAreaView>
+      </TouchableWithoutFeedback>
+      {/* </KeyboardAvoidingView> */}
+    </SafeAreaView>
   )
 }
 
@@ -79,7 +85,6 @@ export default SignUpPage
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-   
   },
   containerView: {
     flex: 1,
@@ -89,7 +94,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: 20, 
+    paddingBottom: 20,
   },
   imageStyle: {
     width: 100,
@@ -106,7 +111,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical:20,
+    paddingVertical: 20,
   },
   titleStyle: {
     paddingTop: 50
