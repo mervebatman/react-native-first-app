@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import AuthStack from './AuthSttack';
 import UserStack from './UserStack';
 import { useSelector } from 'react-redux';
-import { use } from 'react';
+import app from '../../firebaseConfig';
 
 const RootNavigation = () => {
 

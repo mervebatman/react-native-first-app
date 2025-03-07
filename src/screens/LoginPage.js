@@ -2,10 +2,15 @@ import { StyleSheet, Text, View, Image } from 'react-native'
 import { Loading, CustomTextInput, CustomButton } from '../components/';
 import { useSelector, useDispatch } from 'react-redux';
 import { setEmail, setPassword, setIsLoading, setLogin } from '../redux/userSlice';
+import { login } from '../redux/userSlice';
+import { useState } from 'react';
 
 const LoginPage = ({ navigation }) => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   // userSlice içindeki verilerin okunması
-  const { email, password, isLoading } = useSelector((state) => state.user)
+  const { isLoading } = useSelector((state) => state.user)
 
   console.log(email, password, isLoading);
   // userSlice içerisindeki reducer yapılarına veri gönderme
@@ -21,7 +26,7 @@ const LoginPage = ({ navigation }) => {
       <CustomTextInput
         title="Email"
         isSecureText={false}
-        handleOnChangeText={(text) => dispatch(setEmail(text))}
+        handleOnChangeText={(text) => setEmail(text)}
         handleValue={email}
         handlePlaceholder="Enter your email"
       />
@@ -29,7 +34,7 @@ const LoginPage = ({ navigation }) => {
       <CustomTextInput
         title="Password"
         isSecureText={true}
-        handleOnChangeText={(password) => dispatch(setPassword(password))}
+        handleOnChangeText={(password) => setPassword(password)}
         handleValue={password}
         handlePlaceholder="Enter your password"
       />
@@ -37,7 +42,7 @@ const LoginPage = ({ navigation }) => {
       <CustomButton
         buttonText="Login"
         setWidth='80%'
-        handleOnPress={() => dispatch(setLogin())}
+        handleOnPress={() => dispatch(login({ email, password }))}
         buttonColor='#1745ed'
         pressedButtonColor='gray'
       />
